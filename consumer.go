@@ -2,18 +2,13 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/streadway/amqp"
 )
 
 func main() {
-	fmt.Println("Consumer Application")
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
-	checkForError(err)
+	conn := ConnectToConnection()
 	defer conn.Close()
 
-	ch, err := conn.Channel()
-	checkForError(err)
+	ch := ConnectToChannel(conn)
 	defer ch.Close()
 
 	msgs, err := ch.Consume(
@@ -25,6 +20,7 @@ func main() {
 		false,
 		nil,
 	)
+	CheckForError(err)
 
 	forever := make(chan bool)
 	go func() {

@@ -8,14 +8,12 @@ import (
 
 func main() {
 
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
-	checkForError(err)
+	conn := ConnectToConnection()
 	defer conn.Close()
 
 	fmt.Println("Sucessfully connected to RabitMQ Instance")
 
-	ch, err := conn.Channel()
-	checkForError(err)
+	ch := ConnectToChannel(conn)
 	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
@@ -26,7 +24,7 @@ func main() {
 		false,
 		nil,
 	)
-	checkForError(err)
+	CheckForError(err)
 
 	fmt.Println(q)
 
@@ -40,7 +38,7 @@ func main() {
 			Body:        []byte("Hello World"),
 		},
 	)
-	checkForError(err)
+	CheckForError(err)
 
 	fmt.Println("Sucessfully published message to queue")
 }
