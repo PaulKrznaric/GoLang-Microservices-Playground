@@ -37,10 +37,3 @@ func main() {
 	fmt.Println(" [*] - waiting for message")
 	<-forever
 }
-
-func checkForError(err error) {
-	if err != nil {
-		fmt.Println(err)
-		panic(1)
-	}
-}

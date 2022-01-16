@@ -44,10 +44,3 @@ func main() {
 
 	fmt.Println("Sucessfully published message to queue")
 }
-
-func checkForError(err error) {
-	if err != nil {
-		fmt.Println(err)
-		panic(1)
-	}
-}
