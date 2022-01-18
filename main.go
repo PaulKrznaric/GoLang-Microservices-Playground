@@ -16,19 +16,7 @@ func main() {
 	ch := ConnectToChannel(conn)
 	defer ch.Close()
 
-	q, err := ch.QueueDeclare(
-		"TestQueue",
-		false,
-		false,
-		false,
-		false,
-		nil,
-	)
-	CheckForError(err)
-
-	fmt.Println(q)
-
-	err = ch.Publish(
+	err := ch.Publish(
 		"",
 		"TestQueue",
 		false,

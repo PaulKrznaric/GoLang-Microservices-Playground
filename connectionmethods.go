@@ -20,6 +20,19 @@ func ConnectToChannel(conn *amqp.Connection) (channel *amqp.Channel) {
 	return channel
 }
 
+func CreateQueue(ch *amqp.Channel) {
+	q, err := ch.QueueDeclare(
+		"TestQueue",
+		false,
+		false,
+		false,
+		false,
+		nil,
+	)
+	CheckForError(err)
+	fmt.Print(q)
+}
+
 func CheckForError(err error) {
 	if err != nil {
 		fmt.Println(err)
