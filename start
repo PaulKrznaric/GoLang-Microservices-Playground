@@ -2,6 +2,8 @@
 docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management
 npm install ttab -g
 chmod +x consumer main
+echo "You'll need to add a 'TestQueue' to RabbitMQ"
+echo "This is not currently implemented automatically so the conusmer will fail"
 ttab -a iTerm ./consumer
 echo "Attached the consumer"
 echo "To attach a message to the queue type './main'"
