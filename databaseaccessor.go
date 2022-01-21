@@ -30,7 +30,7 @@ var err error
 func main() {
 	router := mux.NewRouter()
 
-	db, err = gorm.Open("postgres", "host=db port=5432 user=paulkrznaric dbname=gotest sslmode=disable password=pw")
+	db, err = gorm.Open("postgres", "host=localhost port=54320 user=go_user dbname=gotest1 sslmode=disable password=pw")
 	CheckForError(err)
 	defer db.Close()
 
