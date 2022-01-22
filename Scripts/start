@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 docker start some-rabbit
 npm install ttab -g
-chmod +x consumer main
-ttab -a iTerm ./consumer
+chmod +x ../src/consumer main
+ttab -a iTerm ./../src/consumer
 echo "Attached the consumer"
 echo "To attach a message to the queue type './main'"

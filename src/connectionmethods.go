@@ -35,10 +35,10 @@ func CreateQueue(ch *amqp.Channel) {
 	fmt.Print(q)
 }
 
-func ConnectToDatabase() (*mux.Router router, *gorm.db db){
+func ConnectToDatabase() (*mux.Router, *gorm.DB) {
 	router := mux.NewRouter()
 
-	db, err = gorm.Open("postgres", "host=localhost port=54320 user=go_user dbname=gotest1 sslmode=disable password=pw")
+	db, err := gorm.Open("postgres", "host=localhost port=54320 user=go_user dbname=gotest1 sslmode=disable password=pw")
 	CheckForError(err)
 
 	return router, db
