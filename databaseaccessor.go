@@ -13,28 +13,12 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type Message struct {
-	Content string
-	id      int
-}
-
-type User struct {
-	Received []Message
-	Sent     []Message
-	Name     string
-}
-
 var db *gorm.DB
 var err error
 
-func main() {
-	router := mux.NewRouter()
-
-	db, err = gorm.Open("postgres", "host=localhost port=54320 user=go_user dbname=gotest1 sslmode=disable password=pw")
-	CheckForError(err)
+func setup() {
+	router, db := ConnectToDatabase()
 	defer db.Close()
-
-	addData(db)
 
 	router.HandleFunc("/messages", GetMessages).Methods("GET")
 	router.HandleFunc("/messages/{id}", GetMessage).Methods("GET")
@@ -45,34 +29,6 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(":8080", handler))
 
-}
-
-func addData(db *gorm.DB) {
-	db.AutoMigrate(&User{})
-	db.AutoMigrate(&Message{})
-
-	users := []User{
-		{Name: "Paul"},
-		{Name: "Brody"},
-		{Name: "Raj"},
-	}
-
-	messages := []Message{
-		{Content: "Hello", id: 0},
-		{Content: "Hey", id: 1},
-		{Content: "How are you?", id: 2},
-		{Content: "Swell. You?", id: 3},
-		{Content: "Fantastic.", id: 4},
-		{Content: "Are you there?", id: 5},
-	}
-
-	for index := range users {
-		db.Create(&users[index])
-	}
-
-	for index := range messages {
-		db.Create(&messages[index])
-	}
 }
 
 func GetMessages(w http.ResponseWriter, r *http.Request) {
