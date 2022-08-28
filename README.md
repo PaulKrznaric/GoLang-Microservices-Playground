@@ -21,3 +21,7 @@ The software is entirely locally deployed and these softwares will not be setup 
   d. `./consumer`  
   e. `./main`  
 3. You should have a consumer and an instance now setup. You can send messages and they'll be logged in the database
+
+## Teardown
+In your terminal instances cancel the runtimes that have started (`ctrl` + `c`)
+In Docker, stop your running containers
