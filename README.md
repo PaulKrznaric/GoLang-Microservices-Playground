@@ -14,7 +14,7 @@ This software is incredibly snowflakey. It requires the following:
 The software is entirely locally deployed and these softwares will not be setup on your machine
 
 1. Navigate to the `./scripts` folder and elevate permissions of all Bash scripts (`chmod +x *`)  
-2. Run the scripts as follows:  
+2. Run the scripts in the following order:  
   a. `./startpostgresql`  
   b. `./setupdatabase`  
   c. `./setup`  
