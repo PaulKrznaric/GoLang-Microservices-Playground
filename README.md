@@ -13,12 +13,11 @@ This software is incredibly snowflakey. It requires the following:
 
 The software is entirely locally deployed and these softwares will not be setup on your machine
 
-1. Navigate to the `./scripts` folder and elevate permissions of all Bash scripts (`chmod +x *`)
-2. Run the scripts as follows:
-  a. `./startpostgresql`
-  b. `./setupdatabase`
-  c. `./setup`
-  d. `./consumer`
-  e. `./main`
-  (I'm so sorry)
+1. Navigate to the `./scripts` folder and elevate permissions of all Bash scripts (`chmod +x *`)  
+2. Run the scripts as follows:  
+  a. `./startpostgresql`  
+  b. `./setupdatabase`  
+  c. `./setup`  
+  d. `./consumer`  
+  e. `./main`  
 3. You should have a consumer and an instance now setup. You can send messages and they'll be logged in the database
